@@ -104,12 +104,12 @@
                 Authentication: 'secret',
                 'x-api-key': apiKey
             }
-        These paramters do 2 things, set hte method of our request, and send our API key with the request.
+        These paramters do 2 things, set the method of our request, and send our API key with the request.
 
         Showing and populating the breed selection drop down.
         1. Uncomment the label and select tags
         2. Create 2 new async functions, fetchBreeds and showBreeds 
-        3. Inside fetchbreeds, use a try...cath block as before, and have it return the list of breeds in json
+        3. Inside fetchbreeds, use a try...catch block as before, and have it return the list of breeds in json
         Make sure to include params as second argument to fetch()
         let response = await fetch(breedsApi, params)
         4. Inside showBreeds, use forEach() to loop through and show each breed in an option tag inside the select tag. Set the value property of each option tag to the breed id
