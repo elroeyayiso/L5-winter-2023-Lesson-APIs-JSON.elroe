@@ -50,8 +50,7 @@
         /* Exercise 1: Simple GET request, use a random dog photo for the page background
         1. Select the body tag and assign it a variable.
         2. Use the style property to set its background picture to the unsplash backgroundImg + "dog" */
-        let bodyTag=document.querySelector("body");
-        bodyTag.style.backgroundImage=`url(${backgroundImg}dog)`;
+       
 
 
 
@@ -61,23 +60,12 @@
         3. Inside try, create a variable called response with the value await fetch(), pass fetch the dogApi. Log response in the console.
         4. Inside catch, console any error.
         5. Call the function. */
-        let fetchDog= async ()=>{
-            try{
-                let response= await fetch(dogApi);
-                console.log(response.status);
-                console.log(response);
-                return response.json()
-            }
-            catch{
-                console.error(error);
-            }
-        }
-        let doggy=fetchDog();
-        console.log(doggy);
+
+
         /* Exercise 3: Exploring status codes
         1. Inside try, log response.status in the console. */
 
-        
+    
 
       
         
@@ -101,13 +89,8 @@
         6. Add a click event listener to the fetch button to call showDog */
 
        
-        let showDog= async ()=>{
-            let dog= await fetchDog();
-            console.log(dog);
-            dogPic.src=dog[0].url;
-        }
-        showDog();
-        btn.addEventListener("click",showDog);
+
+
 
 
         /* Extra credit: Fetch dogs by breed 

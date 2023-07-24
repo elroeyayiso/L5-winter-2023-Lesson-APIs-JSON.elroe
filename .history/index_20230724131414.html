@@ -50,8 +50,7 @@
         /* Exercise 1: Simple GET request, use a random dog photo for the page background
         1. Select the body tag and assign it a variable.
         2. Use the style property to set its background picture to the unsplash backgroundImg + "dog" */
-        let bodyTag=document.querySelector("body");
-        bodyTag.style.backgroundImage=`url(${backgroundImg}dog)`;
+       
 
 
 
@@ -61,23 +60,12 @@
         3. Inside try, create a variable called response with the value await fetch(), pass fetch the dogApi. Log response in the console.
         4. Inside catch, console any error.
         5. Call the function. */
-        let fetchDog= async ()=>{
-            try{
-                let response= await fetch(dogApi);
-                console.log(response.status);
-                console.log(response);
-                return response.json()
-            }
-            catch{
-                console.error(error);
-            }
-        }
-        let doggy=fetchDog();
-        console.log(doggy);
+
+
         /* Exercise 3: Exploring status codes
         1. Inside try, log response.status in the console. */
 
-        
+    
 
       
         
@@ -101,13 +89,8 @@
         6. Add a click event listener to the fetch button to call showDog */
 
        
-        let showDog= async ()=>{
-            let dog= await fetchDog();
-            console.log(dog);
-            dogPic.src=dog[0].url;
-        }
-        showDog();
-        btn.addEventListener("click",showDog);
+
+
 
 
         /* Extra credit: Fetch dogs by breed 
@@ -126,9 +109,60 @@
         Showing and populating the breed selection drop down.
         1. Uncomment the label and select tags
         2. Create 2 new async functions, fetchBreeds and showBreeds 
+
+        // Replace 'your-api-key-here' with your actual API key obtained from step 1
+const apiKey = 'your-api-key-here';
+
+const params = {
+  method: 'GET',
+  headers: {
+    Authentication: 'secret',
+    'x-api-key': apiKey
+  }
+};
+
+        
+
+
+
+
+
+
         3. Inside fetchbreeds, use a try...catch block as before, and have it return the list of breeds in json
         Make sure to include params as second argument to fetch()
         let response = await fetch(breedsApi, params)
+        
+        // Step 2: Create two new async functions, fetchBreeds and showBreeds
+async function fetchBreeds() {
+  try {
+    const response = await fetch(breedsApi, params);
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching breeds:', error);
+    return [];
+  }
+}
+
+function showBreeds(breeds) {
+  const breedSelect = document.getElementById('breed');
+  breeds.forEach((breed) => {
+    const option = document.createElement('option');
+    option.value = breed.id;
+    option.text = breed.name;
+    breedSelect.appendChild(option);
+  });
+}
+
+// Step 4: Call fetchBreeds and showBreeds when the page loads
+window.addEventListener('load', async () => {
+  const breeds = await fetchBreeds();
+  showBreeds(breeds);
+});
+        
+        
+        
+        
+        
         4. Inside showBreeds, use forEach() to loop through and show each breed in an option tag inside the select tag. Set the value property of each option tag to the breed id
 
         Editing fetchDog to get a dog by breed
